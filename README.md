@@ -1,7 +1,7 @@
 # Issues
 
-**TODO: Add description**
-
+**A simple Github Issue fetcher project**
+Example projec from book [Programming Elixir >= 1.6: Functional > Concurrent > Pragmatic > Fun](https://www.amazon.com.br/Programming-Elixir-1-6-Dave-Thomas/dp/1680502999)
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
