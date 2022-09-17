@@ -1,5 +1,6 @@
 defmodule Issues.CLI do
   @default_count 4
+  import Issues.TableFormatter only: [print_table_for_columns: 2]
 
   @moduledoc """
   Handle the command line parsing and the dispatch to
@@ -44,10 +45,18 @@ defmodule Issues.CLI do
     """
   end
 
-  def process({user, project, _count}) do
+  def process({user, project, count}) do
     Issues.GithubIssues.fetch(user, project)
     |> decode_response()
     |> sort_into_descending_order()
+    |> last(count)
+    |> print_table_for_columns(["number", "created_at", "title"])
+  end
+
+  def last(list, count) do
+    list
+    |> Enum.take(count)
+    |> Enum.reverse
   end
 
   def sort_into_descending_order(list_of_issues) do
